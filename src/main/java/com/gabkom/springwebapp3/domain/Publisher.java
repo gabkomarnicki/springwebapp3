@@ -18,7 +18,7 @@ public class Publisher {
     private String zip;
 
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "publisher_id"),
+    @JoinTable(name = "publisher_authork", joinColumns = @JoinColumn(name = "publisher_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>(); // initialise the property by default
 
