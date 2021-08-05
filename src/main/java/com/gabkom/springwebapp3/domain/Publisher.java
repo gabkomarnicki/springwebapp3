@@ -1,9 +1,8 @@
 package com.gabkom.springwebapp3.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Publisher {
@@ -18,7 +17,8 @@ public class Publisher {
     private String state;
     private String zip;
 
-    //ManyToMany here?
+    @ManyToMany(mappedBy = "authors")
+    private Set<Author> authors = new HashSet<>(); // initialise the property by default
 
     public Publisher() {
     }
@@ -77,6 +77,14 @@ public class Publisher {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 
     @Override
