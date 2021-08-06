@@ -19,7 +19,7 @@ public class Publisher {
 
     @ManyToMany
     @JoinTable(name = "publisher_authork", joinColumns = @JoinColumn(name = "publisher_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+            inverseJoinColumns = @JoinColumn(name = "author_id")) // this line wasn't necessary
     private Set<Author> authors = new HashSet<>(); // initialise the property by default
 
     public Publisher() {
