@@ -17,10 +17,14 @@ public class Publisher {
     private String state;
     private String zip;
 
-    @ManyToMany
-    @JoinTable(name = "publisher_authork", joinColumns = @JoinColumn(name = "publisher_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")) // this line wasn't necessary
-    private Set<Author> authors = new HashSet<>(); // initialise the property by default
+//    @ManyToMany
+//    @JoinTable(name = "publisher_authork", joinColumns = @JoinColumn(name = "publisher_id"),
+//            inverseJoinColumns = @JoinColumn(name = "author_id")) // this line wasn't necessary
+//    private Set<Author> authors = new HashSet<>(); // initialise the property by default
+
+    @OneToMany // one pub to many books
+    @JoinColumn(name = "publisher_id") // tells Hibernate to give an ID to track the book record. No need for a @JoinTable
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
     }
@@ -81,12 +85,21 @@ public class Publisher {
         this.zip = zip;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+//    public Set<Author> getAuthors() {
+//        return authors;
+//    }
+//
+//    public void setAuthors(Set<Author> authors) {
+//        this.authors = authors;
+//    }
+
+
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
