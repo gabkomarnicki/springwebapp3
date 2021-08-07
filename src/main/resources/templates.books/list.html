@@ -17,10 +17,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>123</td>
-                <td>Spring in Action</td>
-                <td>DK</td>
+            <tr th:each="book : ${books}"> <!-- asking the model to give us the property of books; an iterator over books -->
+                <td th:text="${book.id}">123</td>
+                <td th:text="${book.title}">Spring in Action</td>
+                <td th:text="${book.publisher.name}">DK</td>
             </tr>
             </tbody>
         </table>
